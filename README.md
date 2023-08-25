@@ -1,16 +1,7 @@
-# task_list_app
+# **Task_List**: Tu Compañero de Productividad
 
-A new Flutter project.
+![Logo de task_list_app](assets/logo.png)
 
-## Getting Started
+task_list_app es una aplicación móvil diseñada para simplificar y potenciar la forma en que gestionas tus tareas diarias. Esta intuitiva y eficiente aplicación te permite mantener un control total sobre tus responsabilidades y tareas del dia a dia.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Licencia: Este proyecto está bajo la Licencia MIT.
