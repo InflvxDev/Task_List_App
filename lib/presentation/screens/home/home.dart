@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_list_app/config/Styles/styles.dart';
+import 'package:task_list_app/presentation/widgets/widgets.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -11,8 +12,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
+
     return Scaffold(
-      appBar: _HomeAppbar(colors: colors),
+
+      appBar: _Appbar(colors: colors),
+
+      drawer: const SideBar(),
 
       body: _HomeBodyListView(),
 
@@ -21,8 +26,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _HomeAppbar extends StatelessWidget implements PreferredSizeWidget{
-  const _HomeAppbar({
+class _Appbar extends StatelessWidget implements PreferredSizeWidget{
+  const _Appbar({
     required this.colors,
   });
 
@@ -31,18 +36,34 @@ class _HomeAppbar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('Task List', style: angelinaBold35()),
-      centerTitle: true,
-      backgroundColor: colors.primary,
-      actions: <Widget>[
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert, color: Colors.white, size: 25,)),
-      ],
-      leading: IconButton(
-        icon: const Icon(Icons.menu, color: Colors.white, size: 25),
-        onPressed: () {},
-      ),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
+        title: Text('Task List', style: angelinaBold35()),
+        centerTitle: true,
+        backgroundColor: colors.primary,
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.more_vert,
+                color: Colors.white,
+                size: 25,
+              )),
+        ],
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.white,
+                size: 25,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
         )
@@ -75,14 +96,17 @@ class _HomeBodyListViewState extends State<_HomeBodyListView> {
               child: InkWell(
                 onTap: () {},
                 child: CheckboxListTile(
-                  title: Text('Task #${index + 1}', style: angelinaBold15(),),
+                  title: Text('Task #${index + 1}', style: bentonSansMedium15(),),
                   value: ischecbox, 
                   onChanged: (bool? value) {
                     setState(() {
                       ischecbox = value;
                     });
                   },
-                  subtitle: const Text('Sunt reprehenderit est ut et sint adipisicing officia aliquip laborum ea sunt proident aliquip.'),
+                  subtitle: Text(
+                    'Sunt reprehenderit est ut et sint adipisicing officia aliquip laborum ea sunt proident aliquip.',
+                    style: bentonSansRegular12(),
+                  ),
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
